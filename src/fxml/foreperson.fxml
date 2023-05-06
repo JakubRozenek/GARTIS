@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.SplitMenuButton?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="720.0" maxWidth="1200.0" minHeight="720.0" minWidth="1200.0" prefHeight="720.0" prefWidth="1200.0" style="-fx-background-color: #F5F7FB;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.foreperson">
+    <children>
+        <AnchorPane prefHeight="720.0" prefWidth="200.0" style="-fx-background-color: #FFFFFF;">
+            <children>
+                <Button fx:id="dashboardButton" layoutY="200.0" mnemonicParsing="false" onAction="#changePane" prefHeight="25.0" prefWidth="200.0" stylesheets="@../css/buttons.css" text="Dashboard" />
+                <Button fx:id="accountButton" layoutY="250.0" mnemonicParsing="false" onAction="#changePane" prefHeight="25.0" prefWidth="200.0" stylesheets="@../css/buttons.css" text="Accounts" />
+                <Button fx:id="bookingButton" layoutY="300.0" mnemonicParsing="false" onAction="#changePane" prefHeight="25.0" prefWidth="200.0" stylesheets="@../css/buttons.css" text="Booking" />
+                <Button fx:id="jobListButton" layoutY="350.0" mnemonicParsing="false" onAction="#changePane" prefHeight="25.0" prefWidth="200.0" stylesheets="@../css/buttons.css" text="Job List" />
+                <Button fx:id="stockButton" layoutY="400.0" mnemonicParsing="false" onAction="#changePane" prefHeight="25.0" prefWidth="200.0" stylesheets="@../css/buttons.css" text="Stock Control" />
+                <Line endX="100.0" fill="#00000018" layoutX="101.0" layoutY="677.0" startX="-100.0" stroke="#00000019" strokeMiterLimit="0.0" />
+                <SplitMenuButton fx:id="accountSplitMenu" contentDisplay="RIGHT" layoutX="41.0" layoutY="683.0" mnemonicParsing="false" prefHeight="25.0" stylesheets="@../css/buttons.css">
+                    <items>
+                        <MenuItem onAction="#logoutAccount" text="Logout" />
+                    </items>
+                </SplitMenuButton>
+            </children>
+        </AnchorPane>
+        <AnchorPane layoutX="200.0" prefHeight="720.0" prefWidth="1000.0">
+            <children>
+                <Pane fx:id="stockPane" prefHeight="720.0" prefWidth="1000.0" style="-fx-background-color: #F5F7FB;">
+                    <children>
+                        <Text layoutX="50.0" layoutY="70.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Stock Control">
+                            <font>
+                                <Font size="30.0" />
+                            </font>
+                        </Text>
+                        <TextField fx:id="stockSearchText" layoutX="50.0" layoutY="90.0" prefHeight="25.0" prefWidth="180.0" promptText="Search" />
+                        <Button fx:id="stockOrderButton" layoutX="862.0" layoutY="45.0" mnemonicParsing="false" onAction="#orderStock" prefHeight="25.0" prefWidth="88.0" text="Order" />
+                        <Button fx:id="stockHistoryButton" layoutX="862.0" layoutY="88.0" mnemonicParsing="false" onAction="#orderHistoryGUI" text="Order History" />
+                        <Button fx:id="updateStockButton" layoutX="862.0" layoutY="579.0" mnemonicParsing="false" onAction="#updateStock" text="Update Stock" />
+                        <TableView fx:id="stockTable" layoutX="50.0" layoutY="130.0" onMouseClicked="#selectAccount" prefHeight="430.0" prefWidth="900.0">
+                            <columns>
+                                <TableColumn fx:id="stockPartColumn" prefWidth="100.0" text="Part Name" />
+                                <TableColumn fx:id="stockCodeColumn" prefWidth="100.0" text="Code" />
+                                <TableColumn fx:id="stockManufacturerColumn" prefWidth="100.0" text="Manufacturer" />
+                                <TableColumn fx:id="stockVehicleColumn" prefWidth="100.0" text="Vehicle Type" />
+                                <TableColumn fx:id="stockYearColumn" prefWidth="100.0" text="Year(s)" />
+                                <TableColumn fx:id="stockPriceColumn" prefWidth="100.0" text="Price (£)" />
+                                <TableColumn fx:id="stockLevelColumn" prefWidth="100.0" text="Stock Level" />
+                            </columns>
+                        </TableView>
+                        <TextField fx:id="stockUpdateLevelText" layoutX="862.0" layoutY="618.0" prefHeight="25.0" prefWidth="87.0" promptText="Stock Level" />
+                        <TextField fx:id="stockPartText" layoutX="50.0" layoutY="579.0" promptText="Part Name" />
+                        <TextField fx:id="stockCodeText" layoutX="50.0" layoutY="618.0" promptText="Code" />
+                        <TextField fx:id="stockManufacturerText" layoutX="229.0" layoutY="579.0" promptText="Manufacturer" />
+                        <TextField fx:id="stockVehicleText" layoutX="229.0" layoutY="618.0" promptText="Vehicle Type" />
+                        <TextField fx:id="stockYearText" layoutX="398.0" layoutY="579.0" promptText="Year(s)" />
+                        <TextField fx:id="stockPriceText" layoutX="398.0" layoutY="618.0" promptText="Price" />
+                        <TextField fx:id="stockLevelText" layoutX="559.0" layoutY="579.0" promptText="Stock Level" />
+                        <SplitMenuButton contentDisplay="CENTER" layoutX="559.0" layoutY="618.0" mnemonicParsing="false" onAction="#clearText" prefHeight="25.0" prefWidth="149.0" text="Clear">
+                            <items>
+                                <MenuItem fx:id="stockAddItem" mnemonicParsing="false" text="Add Part" />
+                                <MenuItem fx:id="stockEditItem" mnemonicParsing="false" text="Edit Part" />
+                                <MenuItem fx:id="stockRemoveItem" mnemonicParsing="false" text="Remove Part" />
+                            </items>
+                        </SplitMenuButton>
+                    </children>
+                </Pane>
+                <Pane fx:id="dashboardPane" prefHeight="720.0" prefWidth="1000.0" style="-fx-background-color: #F5F7FB;">
+                    <children>
+                        <Text layoutX="50.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dashboard">
+                            <font>
+                                <Font size="32.0" />
+                            </font>
+                        </Text>
+                    </children>
+                </Pane>
+                <Pane fx:id="bookingPane" prefHeight="720.0" prefWidth="1000.0" style="-fx-background-color: #F5F7FB;">
+                    <children>
+                        <TextField fx:id="bookingNameText" layoutX="797.0" layoutY="168.0" promptText="Name" />
+                        <TextField fx:id="bookingCityText" layoutX="797.0" layoutY="288.0" promptText="City" />
+                        <TextField fx:id="bookingBuildingText" layoutX="797.0" layoutY="208.0" promptText="Building Number" />
+                        <TextField fx:id="bookingPostcodeText" layoutX="797.0" layoutY="328.0" promptText="Postcode" />
+                        <TextField fx:id="bookingStreetText" layoutX="797.0" layoutY="248.0" promptText="Street Address" />
+                        <TextField fx:id="bookingHomeText" layoutX="797.0" layoutY="368.0" promptText="Home" />
+                        <TextField fx:id="bookingMobileText" layoutX="797.0" layoutY="408.0" promptText="Mobile" />
+                        <Text layoutX="50.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Booking">
+                            <font>
+                                <Font size="30.0" />
+                            </font>
+                        </Text>
+                        <Text layoutX="53.0" layoutY="543.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Select Booking Type" wrappingWidth="185.1708984375">
+                            <font>
+                                <Font size="20.0" />
+                            </font>
+                        </Text>
+                        <CheckBox fx:id="motCheckbox" layoutX="54.0" layoutY="556.0" mnemonicParsing="false" text="MOT">
+                            <font>
+                                <Font size="16.0" />
+                            </font>
+                        </CheckBox>
+                        <CheckBox fx:id="serviceCheckbox" layoutX="53.0" layoutY="593.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="88.0" text="Service">
+                            <font>
+                                <Font size="16.0" />
+                            </font>
+                        </CheckBox>
+                        <CheckBox fx:id="repairCheckbox" layoutX="53.0" layoutY="632.0" mnemonicParsing="false" text="Repair">
+                            <font>
+                                <Font size="16.0" />
+                            </font>
+                        </CheckBox>
+                        <Text layoutX="254.0" layoutY="542.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date(dd/mm/year)" wrappingWidth="169.0">
+                            <font>
+                                <Font size="20.0" />
+                            </font>
+                        </Text>
+                        <Text layoutX="446.0" layoutY="542.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Vehicle Registration Number" wrappingWidth="255.0">
+                            <font>
+                                <Font size="20.0" />
+                            </font>
+                        </Text>
+                        <Text fx:id="descriptionTitle" layoutX="254.0" layoutY="619.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Description of Work" wrappingWidth="179.23828125">
+                            <font>
+                                <Font size="20.0" />
+                            </font>
+                        </Text>
+                        <DatePicker fx:id="bookingDatePicker" layoutX="254.0" layoutY="556.0" prefHeight="25.0" prefWidth="169.0" promptText="Booking Date" />
+                        <Button fx:id="walkBookingButton" layoutX="822.0" layoutY="441.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="98.0" text="Create Walk-In" />
+                        <TableView fx:id="bookingTable" layoutX="53.0" layoutY="93.0" onMouseClicked="#selectAccount" prefHeight="400.0" prefWidth="700.0">
+                            <columns>
+                                <TableColumn fx:id="bookingNameColumn" prefWidth="75.0" text="Name" />
+                                <TableColumn fx:id="bookingMobileColumn" prefWidth="75.0" text="Mobile" />
+                                <TableColumn fx:id="bookingVehicleRegistrationColumn" prefWidth="122.0" text="Vehicle Registration" />
+                                <TableColumn fx:id="bookingTypeColumn" prefWidth="85.0" text="Booking Type" />
+                                <TableColumn fx:id="bookingDateColumn" prefWidth="89.0" text="Booking Date" />
+                                <TableColumn fx:id="bookingDescriptionColumn" prefWidth="125.0" text="Description of Work" />
+                                <TableColumn fx:id="bookingCustomerColumn" prefWidth="99.0" text="Customer Type" />
+                            </columns>
+                        </TableView>
+                        <SplitMenuButton fx:id="bookingSplitMenu" layoutX="596.0" layoutY="593.0" mnemonicParsing="false" onAction="#clearText" prefHeight="25.0" prefWidth="117.0" text="Clear">
+                            <items>
+                                <MenuItem fx:id="bookingAddItem" mnemonicParsing="false" text="Create Booking" />
+                                <MenuItem fx:id="bookingEditItem" mnemonicParsing="false" text="Edit Booking" />
+                                <MenuItem fx:id="bookingRemoveItem" mnemonicParsing="false" text="Remove Booking" />
+                            </items>
+                        </SplitMenuButton>
+                        <TextArea fx:id="bookingDescriptionText" layoutX="254.0" layoutY="631.0" prefHeight="75.0" prefWidth="340.0" promptText="Description of Work" />
+                        <ComboBox fx:id="bookingVehicleCombo" editable="true" layoutX="446.0" layoutY="556.0" prefWidth="150.0" promptText="Vehicle Registration" />
+                        <Text layoutX="816.0" layoutY="136.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Walk In">
+                            <font>
+                                <Font size="30.0" />
+                            </font>
+                        </Text>
+                    </children>
+                </Pane>
+                <Pane fx:id="accountPane" prefHeight="720.0" prefWidth="1000.0" style="-fx-background-color: #F5F7FB;">
+                    <children>
+                        <Text layoutX="50.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Account Details">
+                            <font>
+                                <Font size="30.0" />
+                            </font>
+                        </Text>
+                        <SplitMenuButton fx:id="actionSplitButton" layoutX="801.0" layoutY="66.0" mnemonicParsing="false" onAction="#clearText" prefHeight="25.0" prefWidth="149.0" text="Clear">
+                            <items>
+                                <MenuItem fx:id="customerAddItem" mnemonicParsing="false" text="Add Account" />
+                                <MenuItem fx:id="customerEditItem" mnemonicParsing="false" text="Edit Account" />
+                                <MenuItem fx:id="customerRemoveItem" mnemonicParsing="false" text="Remove Account" />
+                            </items>
+                        </SplitMenuButton>
+                        <TextField fx:id="customerNameText" layoutX="275.0" layoutY="34.0" promptText="Name" />
+                        <TextField fx:id="customerCityText" layoutX="275.0" layoutY="66.0" promptText="City" />
+                        <TextField fx:id="customerBuildingText" layoutX="461.0" layoutY="34.0" promptText="Building Number" />
+                        <TextField fx:id="customerPostcodeText" layoutX="461.0" layoutY="66.0" promptText="Postcode" />
+                        <TextField fx:id="customerStreetText" layoutX="636.0" layoutY="34.0" promptText="Street Address" />
+                        <TextField fx:id="customerHomeText" layoutX="636.0" layoutY="66.0" promptText="Home" />
+                        <TextField fx:id="customerMobileText" layoutX="801.0" layoutY="34.0" promptText="Mobile" />
+                        <TableView fx:id="customerTable" layoutX="50.0" layoutY="128.0" onMouseClicked="#selectAccount" prefHeight="500.0" prefWidth="900.0">
+                            <columns>
+                                <TableColumn fx:id="customerNameColumn" prefWidth="125.0" text="Name" />
+                                <TableColumn fx:id="customerBuildingColumn" prefWidth="125.0" text="Building Number" />
+                                <TableColumn fx:id="customerStreetColumn" prefWidth="125.0" text="Street Address" />
+                                <TableColumn fx:id="customerCityColumn" prefWidth="125.0" text="City" />
+                                <TableColumn fx:id="customerPostcodeColumn" prefWidth="125.0" text="Postcode" />
+                                <TableColumn fx:id="customerHomeColumn" prefWidth="125.0" text="Home" />
+                                <TableColumn fx:id="customerMobileColumn" prefWidth="125.0" text="Mobile" />
+                            </columns>
+                        </TableView>
+                        <Button layoutX="50.0" layoutY="90.0" mnemonicParsing="false" onAction="#vehiclesGUI" prefHeight="25.0" prefWidth="120.0" text="Add/View Vehicles" />
+                    </children>
+                </Pane>
+                <Pane fx:id="jobListPane" prefHeight="720.0" prefWidth="1000.0" style="-fx-background-color: #F5F7FB;">
+                    <children>
+                        <Text layoutX="50.0" layoutY="70.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Job List">
+                            <font>
+                                <Font size="30.0" />
+                            </font>
+                        </Text>
+                        <TextField layoutX="50.0" layoutY="90.0" prefHeight="25.0" prefWidth="180.0" promptText="Search" />
+                        <TableView fx:id="jobTable" layoutX="50.0" layoutY="130.0" onMouseClicked="#selectAccount" prefHeight="500.0" prefWidth="900.0">
+                            <columns>
+                                <TableColumn fx:id="jobIDColumn" prefWidth="100.0" text="JobID" />
+                                <TableColumn fx:id="jobStatusColumn" prefWidth="100.0" text="Status" />
+                                <TableColumn fx:id="jobDescriptionColumn" prefWidth="100.0" text="Description" />
+                                <TableColumn fx:id="jobEstimatedColumn" prefWidth="100.0" text="Estimated Time" />
+                                <TableColumn fx:id="jobActualColumn" prefWidth="100.0" text="Actual Time" />
+                                <TableColumn fx:id="jobMechanicColumn" prefWidth="100.0" text="Mechanic" />
+                                <TableColumn fx:id="jobVehicleRegistrationColumn" prefWidth="129.0" text="Vehicle Registration" />
+                                <TableColumn fx:id="jobDescriptionCompletedColumn" prefWidth="144.0" text="Description Completed" />
+                            </columns>
+                        </TableView>
+                        <Button fx:id="generateInvoiceButton" layoutX="845.0" layoutY="38.0" mnemonicParsing="false" onAction="#createInvoice" text="Generate Invoice" />
+                        <Button fx:id="makePaymentButton" layoutX="845.0" layoutY="78.0" mnemonicParsing="false" onAction="#createInvoice" prefHeight="25.0" prefWidth="105.0" text="Make Payment" />
+                  <Button layoutX="710.0" layoutY="65.0" mnemonicParsing="false" onAction="#createStock" prefHeight="25.0" prefWidth="105.0" text="Generate Stock" />
+                    </children>
+                </Pane>
+            </children>
+        </AnchorPane>
+    </children>
+</AnchorPane>

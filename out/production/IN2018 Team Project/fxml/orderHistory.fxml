@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="720.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.orderHistory">
+    <children>
+        <TableView fx:id="historyTable" prefHeight="400.0" prefWidth="720.0">
+            <columns>
+                <TableColumn fx:id="partNameColumn" prefWidth="100.0" text="Part Name" />
+                <TableColumn fx:id="codeColumn" prefWidth="100.0" text="Code" />
+                <TableColumn fx:id="manufacturerColumn" prefWidth="100.0" text="Manufacturer" />
+                <TableColumn fx:id="vehicleTypeColumn" prefWidth="100.0" text="Vehicle Type" />
+                <TableColumn fx:id="yearColumn" prefWidth="100.0" text="Year(s)" />
+                <TableColumn fx:id="priceColumn" prefWidth="100.0" text="Price" />
+                <TableColumn fx:id="dateColumn" prefWidth="118.0" text="Date" />
+            </columns>
+        </TableView>
+    </children>
+</AnchorPane>

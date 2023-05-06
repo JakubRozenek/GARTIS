@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.SplitMenuButton?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="720.0" maxWidth="1200.0" minHeight="720.0" minWidth="1200.0" prefHeight="720.0" prefWidth="1200.0" style="-fx-background-color: #F5F7FB;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.mechanic">
+   <children>
+      <AnchorPane prefHeight="720.0" prefWidth="200.0" style="-fx-background-color: #FFFFFF;">
+         <children>
+            <Button fx:id="dashboardButton" layoutY="200.0" mnemonicParsing="false" onAction="#changePane" prefHeight="25.0" prefWidth="200.0" stylesheets="@../css/buttons.css" text="Dashboard" />
+            <Button fx:id="jobButton" layoutY="250.0" mnemonicParsing="false" onAction="#changePane" prefHeight="25.0" prefWidth="200.0" stylesheets="@../css/buttons.css" text="Job List" />
+            <Line endX="100.0" fill="#00000018" layoutX="101.0" layoutY="677.0" startX="-100.0" stroke="#00000019" strokeMiterLimit="0.0" />
+            <SplitMenuButton fx:id="accountSplitMenu" contentDisplay="RIGHT" layoutX="41.0" layoutY="683.0" mnemonicParsing="false" prefHeight="25.0" stylesheets="@../css/buttons.css">
+               <items>
+                  <MenuItem onAction="#logoutAccount" text="Logout" />
+               </items>
+            </SplitMenuButton>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="200.0" prefHeight="720.0" prefWidth="1000.0">
+         <children>
+            <Pane fx:id="dashboardPane" prefHeight="720.0" prefWidth="1000.0" style="-fx-background-color: #F5F7FB;">
+               <children>
+                  <Text layoutX="50.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dashboard">
+                     <font>
+                        <Font size="32.0" />
+                     </font>
+                  </Text>
+               </children>
+            </Pane>
+            <Pane fx:id="jobPane" prefHeight="720.0" prefWidth="1000.0" style="-fx-background-color: #F5F7FB;">
+               <children>
+                  <Text layoutX="50.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Job List">
+                     <font>
+                        <Font size="30.0" />
+                     </font>
+                  </Text>
+                  <ComboBox fx:id="jobStatusCombo" layoutX="800.0" layoutY="86.0" prefWidth="150.0" promptText="Job Status" />
+                  <TableView fx:id="jobTable" layoutX="50.0" layoutY="128.0" onMouseClicked="#selectAccount" prefHeight="420.0" prefWidth="900.0">
+                     <columns>
+                        <TableColumn fx:id="jobIDColumn" prefWidth="100.0" text="JobID" />
+                        <TableColumn fx:id="jobStatusColumn" prefWidth="100.0" text="Status" />
+                        <TableColumn fx:id="jobDescriptionColumn" prefWidth="100.0" text="Description" />
+                        <TableColumn fx:id="jobEstimatedColumn" prefWidth="100.0" text="Estimated Time" />
+                        <TableColumn fx:id="jobActualColumn" prefWidth="100.0" text="Actual Time" />
+                        <TableColumn fx:id="jobMechanicColumn" prefWidth="100.0" text="Mechanic" />
+                        <TableColumn fx:id="jobVehicleRegistrationColumn" prefWidth="129.0" text="Vehicle Registration" />
+                        <TableColumn fx:id="jobDescriptionCompletedColumn" prefWidth="144.0" text="Description Completed" />
+                     </columns>
+                  </TableView>
+                  <Button layoutX="800.0" layoutY="53.0" mnemonicParsing="false" onAction="#acceptJob" prefHeight="25.0" prefWidth="150.0" text="Accept Job" />
+                  <Button layoutX="50.0" layoutY="90.0" mnemonicParsing="false" onAction="#addPartsGUI" prefHeight="25.0" prefWidth="94.0" text="Add Parts" />
+                  <Button layoutX="165.0" layoutY="90.0" mnemonicParsing="false" onAction="#removePartsGUI" prefHeight="25.0" prefWidth="94.0" text="Remove Parts" />
+                  <TextArea fx:id="workDoneText" layoutX="48.0" layoutY="594.0" prefHeight="100.0" prefWidth="300.0" promptText="Work Done" />
+                  <Text layoutX="50.0" layoutY="580.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Work Done:">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="380.0" layoutY="583.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Actual Time:">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+                  <TextField fx:id="actualTimeText" layoutX="380.0" layoutY="600.0" promptText="Actual Time" />
+                  <Button layoutX="407.0" layoutY="644.0" mnemonicParsing="false" onAction="#updateJob" prefHeight="25.0" prefWidth="94.0" text="Finish Job" />
+               </children>
+            </Pane>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
